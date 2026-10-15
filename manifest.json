@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "mode": "live",
+  "dataVersion": "ecc183c3df098b06",
+  "generatedAt": "2026-10-15T15:57:44.288Z",
+  "lastSuccessfulCollectionAt": null,
+  "lastCompleteRefreshAt": null,
+  "sourceCommit": "8b290455faa5fe1aaaf7f483d35d5a16500fd529",
+  "dataCommit": "uncommitted",
+  "jobCount": 0,
+  "hashes": {
+    "jobs.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "sources.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "aliases.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+  }
+}
