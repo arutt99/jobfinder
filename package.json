@@ -1,0 +1,54 @@
+{
+  "name": "atlassian-jobscout",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "demo": "node --import tsx scripts/collect.ts --fixtures --output work/demo && node --import tsx scripts/stage-public-data.ts --input work/demo --allow-fixtures",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "playwright test",
+    "collect": "node --import tsx scripts/collect.ts",
+    "data:validate": "node --import tsx scripts/validate-snapshot.ts",
+    "data:quality": "node --import tsx scripts/quality-gate.ts",
+    "data:stage": "node --import tsx scripts/stage-public-data.ts",
+    "state:pull": "node --import tsx scripts/state-pull.ts",
+    "state:push": "node --import tsx scripts/state-push.ts",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "artifact:check": "node --import tsx scripts/check-artifact.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "fast-xml-parser": "5.11.2",
+    "he": "1.2.0",
+    "lucide-react": "0.468.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "zod": "4.1.12"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.0",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.56.1",
+    "@types/he": "1.2.3",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.1.0",
+    "eslint": "10.12.0",
+    "prettier": "3.6.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2",
+    "vite": "7.3.7",
+    "vitest": "4.1.12"
+  }
+}

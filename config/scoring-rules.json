@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "thresholds": { "strong": 65, "related": 40 },
+  "points": {
+    "admin_title": 50,
+    "specialist_title": 35,
+    "ownership": 25,
+    "configuration": 5,
+    "jsm": 10,
+    "platform": 5,
+    "incidental_title": -35,
+    "incidental_use": -20
+  }
+}
