@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "example-greenhouse",
+      "name": "Example Employer",
+      "type": "greenhouse",
+      "board": "REPLACE_WITH_VERIFIED_BOARD_TOKEN",
+      "region": "global",
+      "enabled": false,
+      "approval": {
+        "status": "candidate",
+        "reviewedAt": null,
+        "reviewAfter": null,
+        "documentationUrl": "https://docs.greenhouse.io/job-board.html",
+        "termsUrl": null,
+        "permissionBasis": null,
+        "publicFields": [],
+        "attribution": null,
+        "maxRetentionDays": null,
+        "allowGitHistory": false
+      },
+      "requestPolicy": {
+        "maxConcurrent": 1,
+        "minDelayMs": 1500,
+        "timeoutMs": 20000,
+        "maxPages": 20,
+        "maxResponseBytes": 5000000
+      }
+    }
+  ]
+}

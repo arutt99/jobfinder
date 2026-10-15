@@ -1,0 +1,246 @@
+[
+  {
+    "sourceJobId": "101",
+    "title": "Senior Jira Administrator",
+    "company": "Northstar Digital",
+    "url": "https://example.invalid/jobs/101",
+    "text": "Administer Jira and Confluence. Own workflows, schemes, permissions, custom fields, Atlassian Cloud integrations and ScriptRunner automation.",
+    "locations": ["United States"],
+    "countries": ["United States"],
+    "workplace": "remote",
+    "remoteEligibility": ["United States"],
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 115000,
+      "max": 145000,
+      "currency": "USD",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 2
+  },
+  {
+    "sourceJobId": "102",
+    "title": "Jira Service Management Administrator",
+    "company": "Evergreen Systems",
+    "url": "https://example.invalid/jobs/102",
+    "text": "Administer Jira Service Management service projects and request types. Configure workflows, permissions, Assets, SLAs, ITIL service catalogs and Atlassian Cloud integrations.",
+    "locations": ["Worldwide"],
+    "workplace": "remote",
+    "remoteEligibility": ["Worldwide"],
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 105000,
+      "max": 135000,
+      "currency": "USD",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 5
+  },
+  {
+    "sourceJobId": "103",
+    "title": "Atlassian Platform Engineer",
+    "company": "Orbit Labs",
+    "url": "https://example.invalid/jobs/103",
+    "text": "Own Atlassian Cloud and Confluence administration, workflows, custom fields, permissions and SSO. Lead migrations and platform integrations.",
+    "locations": ["London, United Kingdom"],
+    "countries": ["United Kingdom"],
+    "workplace": "hybrid",
+    "remoteEligibility": [],
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 70000,
+      "max": 90000,
+      "currency": "GBP",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 8
+  },
+  {
+    "sourceJobId": "104",
+    "title": "Atlassian Implementation Consultant",
+    "company": "Clearpath Consulting",
+    "url": "https://example.invalid/jobs/104",
+    "text": "Configure Jira and Confluence workflows, permissions and custom fields. Deliver Atlassian Cloud migrations and Jira Service Management implementation.",
+    "locations": ["European Union"],
+    "workplace": "remote",
+    "remoteEligibility": ["European Union"],
+    "employmentType": "Contract",
+    "salary": {
+      "min": 70,
+      "max": 95,
+      "currency": "EUR",
+      "interval": "hour",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 12
+  },
+  {
+    "sourceJobId": "105",
+    "title": "Jira Administrator",
+    "company": "Juniper Health",
+    "url": "https://example.invalid/jobs/105",
+    "text": "Administer Jira projects, schemes, custom fields and permissions. Maintain Confluence and Atlassian Cloud integrations. No clearance required.",
+    "locations": ["Austin, TX, United States"],
+    "countries": ["United States"],
+    "workplace": "hybrid",
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 95000,
+      "max": 125000,
+      "currency": "USD",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 18
+  },
+  {
+    "sourceJobId": "106",
+    "title": "Atlassian Systems Administrator",
+    "company": "Fieldwork Studio",
+    "url": "https://example.invalid/jobs/106",
+    "text": "Administer Atlassian Cloud and Confluence, manage Jira workflows, custom fields, user provisioning, SAML and permissions. Maintain ScriptRunner Groovy integrations.",
+    "locations": ["Canada"],
+    "countries": ["Canada"],
+    "workplace": "remote",
+    "remoteEligibility": ["Canada"],
+    "employmentType": "Full-time",
+    "ageHours": 22
+  },
+  {
+    "sourceJobId": "107",
+    "title": "JSM Administrator",
+    "company": "Harbor Technologies",
+    "url": "https://example.invalid/jobs/107",
+    "text": "Administer JSM service projects, workflows, request types, permissions and integrations. Own ITIL incident and change management with Jira Service Desk.",
+    "locations": ["New York, NY, United States"],
+    "countries": ["United States"],
+    "workplace": "onsite",
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 110000,
+      "max": 140000,
+      "currency": "USD",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 30
+  },
+  {
+    "sourceJobId": "108",
+    "title": "Business Systems Engineer",
+    "company": "Copperline",
+    "url": "https://example.invalid/jobs/108",
+    "text": "Own Jira administration, configure workflows, custom fields, schemes and permissions. Lead Jira Service Management and Atlassian Cloud integrations.",
+    "locations": ["United States, Eastern time zone"],
+    "countries": ["United States"],
+    "workplace": "remote",
+    "remoteEligibility": ["United States", "Eastern time zone"],
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 120000,
+      "max": 155000,
+      "currency": "USD",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 40
+  },
+  {
+    "sourceJobId": "109",
+    "title": "Confluence Administrator",
+    "company": "Morrow Group",
+    "url": "https://example.invalid/jobs/109",
+    "text": "Administer Confluence and the Atlassian platform, configure workflows and permissions, SSO provisioning and custom fields. Manage Jira Cloud migrations.",
+    "locations": ["Berlin, Germany"],
+    "countries": ["Germany"],
+    "workplace": "hybrid",
+    "employmentType": "Full-time",
+    "salary": {
+      "min": 65000,
+      "max": 85000,
+      "currency": "EUR",
+      "interval": "year",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 50
+  },
+  {
+    "sourceJobId": "110",
+    "title": "Jira Cloud Engineer",
+    "company": "Waypoint Software",
+    "url": "https://example.invalid/jobs/110",
+    "text": "Own Jira administration workflows, schemes, custom fields and permissions. Build ScriptRunner and REST API integrations for Atlassian Cloud.",
+    "locations": ["Worldwide"],
+    "workplace": "remote",
+    "remoteEligibility": ["Worldwide"],
+    "employmentType": "Contract",
+    "salary": {
+      "min": 65,
+      "max": 90,
+      "currency": "USD",
+      "interval": "hour",
+      "kind": "employer_stated",
+      "raw": null
+    },
+    "ageHours": 70
+  },
+  {
+    "sourceJobId": "111",
+    "title": "Atlassian Solutions Architect",
+    "company": "Maple & Stone",
+    "url": "https://example.invalid/jobs/111",
+    "text": "Advise clients on Atlassian Cloud migrations, workflows and permissions. Collaborate with administration teams on platform integrations.",
+    "locations": ["Toronto, Canada"],
+    "countries": ["Canada"],
+    "workplace": "hybrid",
+    "employmentType": "Full-time",
+    "ageHours": 90
+  },
+  {
+    "sourceJobId": "112",
+    "title": "Jira Migration Specialist",
+    "company": "Signal Partners",
+    "url": "https://example.invalid/jobs/112",
+    "text": "Plan Jira Data Center migrations and integrations. Design workflows and permissions with the platform team.",
+    "locations": [],
+    "workplace": "unknown",
+    "employmentType": "Temporary",
+    "ageHours": 110
+  },
+  {
+    "sourceJobId": "113",
+    "title": "Atlassian Support Engineer",
+    "company": "Fern Collective",
+    "url": "https://example.invalid/jobs/113",
+    "text": "Support Atlassian Cloud integrations, workflows and permissions. Troubleshoot Confluence escalations for customer teams.",
+    "locations": ["Australia"],
+    "countries": ["Australia"],
+    "workplace": "remote",
+    "remoteEligibility": [],
+    "employmentType": "Part-time",
+    "ageHours": 140
+  },
+  {
+    "sourceJobId": "114",
+    "title": "Software Engineer",
+    "company": "Sample Technology",
+    "url": "https://example.invalid/jobs/114",
+    "text": "Build web applications using TypeScript. Use Jira to track sprint tasks and tickets.",
+    "locations": ["United States"],
+    "countries": ["United States"],
+    "workplace": "remote",
+    "employmentType": "Full-time",
+    "ageHours": 20
+  }
+]

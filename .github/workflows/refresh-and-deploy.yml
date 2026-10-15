@@ -1,0 +1,113 @@
+name: Refresh jobs and deploy dashboard
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      bootstrap:
+        description: "Intentional first run only: permit a missing data branch"
+        type: boolean
+        default: false
+      accept_large_change:
+        description: "Reviewed large disappearance: allow missing counters to advance"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**.md"]
+permissions:
+  contents: read
+concurrency:
+  group: jobscout-refresh-and-deploy
+  cancel-in-progress: false
+jobs:
+  collect-build:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Pull durable public state
+        env:
+          BOOTSTRAP: ${{ inputs.bootstrap || false }}
+          JOBSCOUT_GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          args=()
+          if [ "$BOOTSTRAP" = true ]; then args+=(--bootstrap); fi
+          npm run state:pull -- --output work/previous "${args[@]}"
+      - name: Collect approved sources
+        env:
+          BOOTSTRAP: ${{ inputs.bootstrap || false }}
+          ACCEPT_LARGE_CHANGE: ${{ inputs.accept_large_change || false }}
+          NODE_USE_ENV_PROXY: "1"
+        run: |
+          args=()
+          if [ -f work/previous/manifest.json ]; then args+=(--state work/previous); fi
+          if [ "$BOOTSTRAP" = true ]; then args+=(--bootstrap); fi
+          if [ "$ACCEPT_LARGE_CHANGE" = true ]; then args+=(--accept-large-change); fi
+          npm run collect -- --live --output work/candidate "${args[@]}" | tee work/collection-summary.txt
+          cat work/collection-summary.txt >> "$GITHUB_STEP_SUMMARY"
+      - name: Validate, gate and test
+        run: |
+          npm run data:validate -- --input work/candidate
+          args=()
+          if [ -f work/previous/manifest.json ]; then args+=(--previous work/previous); fi
+          npm run data:quality -- --candidate work/candidate "${args[@]}"
+          npm run lint && npm run typecheck && npm test && npm run test:integration
+      - name: Persist accepted public state
+        env:
+          JOBSCOUT_GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          args=()
+          if [ -f work/previous/manifest.json ]; then args+=(--previous work/previous); fi
+          npm run state:push -- --input work/candidate "${args[@]}"
+          printf 'Data commit: ' >> "$GITHUB_STEP_SUMMARY"
+          cat work/data-commit.txt >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+        id: pages
+      - name: Build exact accepted snapshot
+        env:
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+        run: |
+          npm run data:stage -- --input work/candidate --data-commit "$(cat work/data-commit.txt)"
+          npm run build && npm run artifact:check
+      - run: npx playwright install --with-deps chromium
+      - name: Smoke test production snapshot
+        env:
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+        run: npx playwright test tests/e2e/production.spec.ts --project=desktop
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: dist
+  deploy:
+    needs: collect-build
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy tested artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: Verify published page and snapshot
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          curl --fail --retry 5 --retry-delay 5 --retry-all-errors "$PAGE_URL" --output /dev/null
+          curl --fail --retry 5 --retry-delay 5 --retry-all-errors "${PAGE_URL%/}/data/manifest.json" --output /tmp/published-manifest.json
+          node -e 'const fs=require("fs"); const m=JSON.parse(fs.readFileSync("/tmp/published-manifest.json","utf8")); if(m.mode!=="live"||m.sourceCommit!==process.env.GITHUB_SHA)throw Error("Published revision mismatch");'
+          printf 'Verified deployment: %s\n' "$PAGE_URL" >> "$GITHUB_STEP_SUMMARY"

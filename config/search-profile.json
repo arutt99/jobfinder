@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "staleAfterHours": 48,
+  "closedRetentionDays": 90,
+  "excludedEmployers": [],
+  "excludedKeywords": []
+}
